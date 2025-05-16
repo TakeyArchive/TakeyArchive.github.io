@@ -6,68 +6,56 @@
   <title>TakeyArchive</title>
   <link rel="stylesheet" href="https://unpkg.com/xp.css" />
   <style>
-    html, body {
-      height: 100%;
-    }
-
     body {
       margin: 0;
       padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-image: url('windows-xp-bliss-4k-lu-1920x1080.jpg');
+      transition: background-image 1s ease-in-out;
+      background: url('windows-xp-bliss-4k-lu-1920x1080.jpg') no-repeat center center fixed;
       background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      transition: background-image 0.5s ease-in-out;
     }
 
-    .dark-mode {
-      background-image: url('wp3210282-600034375.jpg');
+    body.dark-mode {
+      background: url('wp3210282-600034375.jpg') no-repeat center center fixed;
+      background-size: cover;
     }
 
-    .mode-toggle {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      z-index: 1000;
+    .dark-mode .window,
+    .dark-mode .title-bar,
+    .dark-mode .window-body {
+      background-color: #2e2e2e;
+      color: white;
+      border-color: #555;
+    }
+
+    .dark-mode video {
+      border: 1px solid #555;
     }
   </style>
 </head>
 <body class="light-mode">
-  <div class="window" style="width: 300px;">
+
+  <!-- Main Window -->
+  <div class="window" style="width: 90%; max-width: 800px; margin: 20px auto;">
     <div class="title-bar">
-      <div class="title-bar-text">Error</div>
+      <div class="title-bar-text">Clips</div>
       <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
         <button aria-label="Close"></button>
       </div>
     </div>
+
     <div class="window-body">
-      <p>The website is still a WIP!</p>
-      <section class="field-row" style="justify-content: flex-end">
-        <button>Okay</button>
-        <button>Cancel</button>
-      </section>
+      <!-- Toggle Button -->
+      <p>
+        <button id="modeToggle">Dark Mode</button>
+      </p>
+
+      <!-- Video List -->
+      <div id="clipList" class="clip-list"></div>
     </div>
   </div>
 
-  <button id="darkModeToggle" class="mode-toggle">Toggle Dark Mode</button>
-
-  <script>
-    const toggleBtn = document.getElementById('darkModeToggle');
-    const body = document.body;
-
-    // Apply stored mode
-    const saved = localStorage.getItem('darkMode');
-    if (saved === 'true') {
-      body.classList.add('dark-mode');
-    }
-
-    toggleBtn.addEventListener('click', () => {
-      const dark = body.classList.toggle('dark-mode');
-      localStorage.setItem('darkMode', dark);
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
