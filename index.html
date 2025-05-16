@@ -2,124 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TakeyArchive</title>
   <link rel="stylesheet" href="https://unpkg.com/xp.css" />
-
-  <!-- Preload images -->
-  <link rel="preload" as="image" href="windows-xp-bliss-4k-lu-1920x1080.jpg">
-  <link rel="preload" as="image" href="wp3210282-600034375.jpg">
-
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      height: 100%;
-    }
-
-    body {
-      font-family: sans-serif;
-      transition: background-color 0.5s ease-in-out;
-    }
-
-    /* Background image fade */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
+      transition: background-image 1s ease-in-out;
+      background: url('windows-xp-bliss-4k-lu-1920x1080.jpg') no-repeat center center fixed;
       background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 1;
-      transition: opacity 0.5s ease-in-out;
-      pointer-events: none;
     }
 
-    body.light-mode::before {
-      background-image: url('windows-xp-bliss-4k-lu-1920x1080.jpg');
+    body.dark-mode {
+      background: url('wp3210282-600034375.jpg') no-repeat center center fixed;
+      background-size: cover;
     }
 
-    body.dark-mode::before {
-      background-image: url('wp3210282-600034375.jpg');
+    .dark-mode .window,
+    .dark-mode .title-bar,
+    .dark-mode .window-body {
+      background-color: #2e2e2e;
+      color: white;
+      border-color: #555;
     }
 
-    .container {
-      padding: 1rem;
-    }
-
-    .dark-toggle {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .window {
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .clip {
-      margin-bottom: 1rem;
-    }
-
-    video {
-      width: 100%;
-      height: auto;
+    .dark-mode video {
+      border: 1px solid #555;
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <div class="dark-toggle">
-      <label for="darkModeToggle">Dark Mode</label>
-      <input type="checkbox" id="darkModeToggle" />
+<body class="light-mode">
+
+  <!-- Main Window -->
+  <div class="window" style="width: 90%; max-width: 800px; margin: 20px auto;">
+    <div class="title-bar">
+      <div class="title-bar-text">Clips</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close"></button>
+      </div>
     </div>
 
-    <div class="window" style="margin: auto;">
-      <div class="title-bar">
-        <div class="title-bar-text">Clips</div>
-        <div class="title-bar-controls">
-          <button aria-label="Minimize"></button>
-          <button aria-label="Maximize"></button>
-          <button aria-label="Close"></button>
-        </div>
-      </div>
-      <div class="window-body">
-        <div class="clip">
-          <h3>Clip One</h3>
-          <p>Takey’s first adventure.</p>
-          <p><small>2023-05-12</small></p>
-          <video controls src="clips/clip1.mp4"></video>
-        </div>
-        <div class="clip">
-          <h3>Clip Two</h3>
-          <p>The mystery deepens.</p>
-          <p><small>2023-06-30</small></p>
-          <video controls src="clips/clip2.mp4"></video>
-        </div>
-      </div>
+    <div class="window-body">
+      <!-- Dark Mode Checkbox -->
+      <p>
+        <label>
+          <input type="checkbox" id="modeToggle" />
+          Dark Mode
+        </label>
+      </p>
+
+      <!-- Video List -->
+      <div id="clipList" class="clip-list"></div>
     </div>
   </div>
 
-  <script>
-    const toggle = document.getElementById('darkModeToggle');
-    const body = document.body;
-
-    // Load mode from localStorage
-    const storedMode = localStorage.getItem('theme') || 'light';
-    body.classList.add(`${storedMode}-mode`);
-    toggle.checked = storedMode === 'dark';
-
-    toggle.addEventListener('change', () => {
-      const mode = toggle.checked ? 'dark' : 'light';
-      body.classList.remove('dark-mode', 'light-mode');
-      body.classList.add(`${mode}-mode`);
-      localStorage.setItem('theme', mode);
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
