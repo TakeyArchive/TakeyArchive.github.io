@@ -5,8 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TakeyArchive</title>
   <link rel="stylesheet" href="https://unpkg.com/xp.css" />
+  <style>
+    body {
+      background: url('wp3210282-600034375.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .dark-mode .window,
+    .dark-mode .title-bar,
+    .dark-mode .window-body {
+      background-color: #2e2e2e;
+      color: white;
+      border-color: #555;
+    }
+
+    .dark-mode video {
+      border: 1px solid #555;
+    }
+  </style>
 </head>
-<body>
+<body class="light-mode">
 
   <!-- Main Window -->
   <div class="window" style="width: 90%; max-width: 800px; margin: 20px auto;">
@@ -19,22 +37,13 @@
       </div>
     </div>
 
-<script>NekoType="white"</script>
-<h1 id=nl><script src="https://webneko.net/n20171213.js"></script><a 
-href="https://webneko.net">Neko</a></h1>
-
-    <style>
-    body {
-      background: url('wp3210282-600034375.jpg') no-repeat center center fixed;
-      background-size: cover;
-    }
-  </style>
-</head>
-
     <div class="window-body">
-      <!-- Toggle Button -->
+      <!-- Dark Mode Checkbox -->
       <p>
-        <button id="modeToggle">Toggle Dark Mode</button>
+        <label>
+          <input type="checkbox" id="modeToggle" />
+          Dark Mode
+        </label>
       </p>
 
       <!-- Video List -->
