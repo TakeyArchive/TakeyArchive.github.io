@@ -30,14 +30,6 @@
     .dark-mode video {
       border: 1px solid #555;
     }
-
-    body {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: background-image 0.5s ease-in-out;
-}
-
   </style>
 </head>
 <body class="light-mode">
@@ -53,9 +45,12 @@
       </div>
     </div>
 
-    <div class="field-row" style="margin-top: 1rem; justify-content: flex-end;">
-  <button id="darkModeToggle">Toggle Dark Mode</button>
-</div>
+    <div class="window-body">
+      <!-- Toggle Button -->
+      <p>
+        <button id="modeToggle">Dark Mode</button>
+      </p>
+
       <!-- Video List -->
       <div id="clipList" class="clip-list"></div>
     </div>
