@@ -45,27 +45,14 @@
       </div>
     </div>
 
-    <div class="window" style="margin: auto; width: 80%;">
-  <div class="title-bar">
-    <div class="title-bar-text">Clips</div>
-    <div class="title-bar-controls">
-      <button aria-label="Minimize"></button>
-      <button aria-label="Maximize"></button>
-      <button aria-label="Close"></button>
-    </div>
-  </div>
-  <div class="window-body" style="display: flex; flex-direction: column; height: 100%;">
-    <div class="content-area" style="flex-grow: 1;">
-      <!-- Your video clips or other content goes here -->
-    </div>
-
-    <div class="field-row" style="margin-top: 1rem; justify-content: flex-end;">
-      <input type="checkbox" id="darkModeToggle" />
-      <label for="darkModeToggle" style="margin-left: 0.4em;">Dark Mode</label>
-    </div>
-  </div>
-</div>
-
+    <div class="window-body">
+      <!-- Dark Mode Checkbox -->
+      <p>
+        <label>
+          <input type="checkbox" id="modeToggle" />
+          Dark Mode
+        </label>
+      </p>
 
       <!-- Video List -->
       <div id="clipList" class="clip-list"></div>
