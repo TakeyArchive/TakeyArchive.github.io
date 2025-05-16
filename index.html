@@ -4,19 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TakeyArchive</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/xp.css" />
 </head>
-<body class="light-mode">
-  <header class="xp-header">
-    <h1>TakeyArchive</h1>
-    <button id="modeToggle">Toggle Dark Mode</button>
-  </header>
-  
-  <script>NekoType="white"</script>
+<body>
+
+  <!-- Main Window -->
+  <div class="window" style="width: 90%; max-width: 800px; margin: 20px auto;">
+    <div class="title-bar">
+      <div class="title-bar-text">Clips</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close"></button>
+      </div>
+    </div>
+
+<script>NekoType="white"</script>
 <h1 id=nl><script src="https://webneko.net/n20171213.js"></script><a 
 href="https://webneko.net">Neko</a></h1>
 
-  <main id="clipList" class="clip-list"></main>
+    <style>
+    body {
+      background: url('wp3210282-600034375.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+    <div class="window-body">
+      <!-- Toggle Button -->
+      <p>
+        <button id="modeToggle">Toggle Dark Mode</button>
+      </p>
+
+      <!-- Video List -->
+      <div id="clipList" class="clip-list"></div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
