@@ -24,10 +24,37 @@ fetch('clips.json')
     console.error('Error loading clips:', err);
   });
 
-// Mode toggle
-const toggleCheckbox = document.getElementById('modeToggle');
+// Mode toggle (button-based)
+const darkModeToggle = document.getElementById('darkModeToggle');
+const body = document.body;
 
-toggleCheckbox.addEventListener('change', () => {
-  document.body.classList.toggle('dark-mode', toggleCheckbox.checked);
-  document.body.classList.toggle('light-mode', !toggleCheckbox.checked);
+// Apply stored preference
+const savedMode = localStorage.getItem('darkMode');
+if (savedMode === 'true') {
+  enableDarkMode();
+} else {
+  disableDarkMode();
+}
+
+// Handle toggle button click
+darkModeToggle.addEventListener('click', () => {
+  if (body.classList.contains('dark-mode')) {
+    disableDarkMode();
+    localStorage.setItem('darkMode', 'false');
+  } else {
+    enableDarkMode();
+    localStorage.setItem('darkMode', 'true');
+  }
 });
+
+function enableDarkMode() {
+  body.classList.remove('light-mode');
+  body.classList.add('dark-mode');
+  body.style.backgroundImage = "url('wp3210282-600034375.jpg')";
+}
+
+function disableDarkMode() {
+  body.classList.remove('dark-mode');
+  body.classList.add('light-mode');
+  body.style.backgroundImage = "url('windows-xp-bliss-4k-lu-1920x1080.jpg')";
+}
