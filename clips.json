@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Clip One",
+    "description": "Takey’s first adventure.",
+    "date": "2023-05-12",
+    "file": "clips/clip1.mp4"
+  },
+  {
+    "title": "Clip Two",
+    "description": "The mystery deepens.",
+    "date": "2023-06-30",
+    "file": "clips/clip2.mp4"
+  }
+]
