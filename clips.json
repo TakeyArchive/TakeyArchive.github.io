@@ -1,12 +1,15 @@
 [
   {
-    "title": "Clip One",
     "description": "Takey is eating a salad, thank you.",
-    "date": "2023-05-12",
+    "date": "2025-05-13",
     "file": "Replay 2025-05-13 19-20-45.mp4"
   },
   {
-    "title": "Clip Two",
+    "description": "The mystery deepens.",
+    "date": "2023-06-30",
+    "file": "clips/clip2.mp4"
+  }
+  ,{
     "description": "The mystery deepens.",
     "date": "2023-06-30",
     "file": "clips/clip2.mp4"
