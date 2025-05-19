@@ -47,9 +47,8 @@
         <button aria-label="Close" onclick="window.location.href='index.html'"></button>
       </div>
     </div>
-    <div class="window-body">
-      <p>This is where the clips will go.</p>
-      <button onclick="window.location.href='index.html'">Back to Home</button>
+    <div class="window-body" id="clipList">
+      <p>Loading clips...</p>
     </div>
   </div>
 
@@ -68,6 +67,31 @@
       const dark = body.classList.toggle('dark-mode');
       localStorage.setItem('darkMode', dark);
     });
+
+    // Load audio clips from JSON
+    fetch('clips.json')
+      .then(res => res.json())
+      .then(clips => {
+        const container = document.getElementById('clipList');
+        container.innerHTML = '';
+
+        clips.forEach(clip => {
+          const card = document.createElement('div');
+          card.className = 'clip-card';
+
+          card.innerHTML = `
+            <p>${clip.description}</p>
+            <p><small>${new Date(clip.date).toLocaleDateString()}</small></p>
+            <audio controls src="${clip.file}"></audio>
+          `;
+
+          container.appendChild(card);
+        });
+      })
+      .catch(err => {
+        console.error('Error loading clips:', err);
+        document.getElementById('clipList').innerHTML = '<p>Failed to load clips.</p>';
+      });
   </script>
 </body>
 </html>

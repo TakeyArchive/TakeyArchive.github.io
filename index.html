@@ -34,6 +34,12 @@
       right: 10px;
       z-index: 1000;
     }
+
+    .clips-button {
+      position: absolute;
+      top: 110px;
+      left: 10px;
+    }
   </style>
 </head>
 <body class="light-mode">
@@ -46,9 +52,12 @@
     </div>
     <div class="window-body">
       <p>The website is still a WIP!</p>
-      <section class="field-row" style="justify-content: flex-end">
-        <button>Okay</button>
-        <button>Cancel</button>
+      <section class="field-row" style="justify-content: space-between">
+        <button onclick="window.location.href='clips.html'">Clips</button>
+        <div>
+          <button>Okay</button>
+          <button>Cancel</button>
+        </div>
       </section>
     </div>
   </div>
@@ -59,7 +68,6 @@
     const toggleBtn = document.getElementById('darkModeToggle');
     const body = document.body;
 
-    // Apply stored mode
     const saved = localStorage.getItem('darkMode');
     if (saved === 'true') {
       body.classList.add('dark-mode');
